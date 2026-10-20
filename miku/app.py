@@ -12,11 +12,10 @@ from datetime import datetime
 
 from PySide6.QtCore import QObject, QPoint, QRect, Qt, QTimer, Signal
 from PySide6.QtGui import QAction, QColor, QFont, QIcon, QPainter, QPixmap
-from PySide6.QtWidgets import (QApplication, QInputDialog, QLabel, QLineEdit, QMenu, QMessageBox, QSystemTrayIcon,
-                               QVBoxLayout, QWidget)
+from PySide6.QtWidgets import QApplication, QInputDialog, QLabel, QLineEdit, QMenu, QSystemTrayIcon, QWidget
 
 from . import ai, brain, commands, outfit, secretary, voice
-from .settings import data_dir, lines, resource_dir, settings, state
+from .settings import lines, resource_dir, settings, state
 
 W, H = 300, 620          # 窓の大きさ
 CHAR_H = 230             # ミクの高さ

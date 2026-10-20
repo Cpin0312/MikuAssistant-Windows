@@ -1,0 +1,41 @@
+name: Windows でテストと exe 作成
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    env:
+      APPDATA: ${{ github.workspace }}\test-appdata
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: セットアップ.bat
+        shell: cmd
+        run: echo.| セットアップ.bat
+      - name: 起動テスト
+        shell: cmd
+        run: |
+          mkdir test-appdata
+          set QT_QPA_PLATFORM=offscreen
+          py -3 .github\smoke_test.py
+      - name: exe作成.bat
+        shell: cmd
+        run: echo.| exe作成.bat
+      - name: exe が起動して落ちないか（15秒）
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath "dist\MikuAssistant\MikuAssistant.exe" -PassThru
+          Start-Sleep -Seconds 15
+          if ($p.HasExited) { Write-Error "exe が終了した（コード $($p.ExitCode)）"; exit 1 }
+          Stop-Process -Id $p.Id -Force
+          Write-Host "EXE OK"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MikuAssistant-Windows
+          path: dist/MikuAssistant

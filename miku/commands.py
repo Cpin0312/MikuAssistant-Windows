@@ -6,7 +6,6 @@ import re
 from datetime import datetime
 
 from . import ai, brain, info, outfit, secretary
-from .settings import settings
 
 ABILITIES = {
     "情報": ["天気（今日・明日）", "ニュース", "電車の運行情報", "イベント探し（いこうよ）", "ネットで調べて答える"],
