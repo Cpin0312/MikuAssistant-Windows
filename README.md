@@ -5,6 +5,7 @@ Mac 版のフォルダ（81_AiAssistence）とは別で、Mac 版には一切影
 
 ## はじめかた（Windows）
 
+0. **ダウンロード**：このページの緑の「**Code**」→「**Download ZIP**」→ 好きな場所に展開
 1. **Python を入れる**：https://www.python.org/downloads/ から最新の Python をインストール
    （最初の画面で「Add python.exe to PATH」にチェック）
 2. このフォルダを Windows に置いて、**`セットアップ.bat`** をダブルクリック（最初の1回だけ）
